@@ -369,7 +369,7 @@ function obterCardsRelatorioBuscadosComFiltro( cardsRelatorio, campoFiltro, valo
 			{
 				var valorCampoFiltradoCardString = valorCampoFiltradoCard.toString();
 				
-				if( valorCampoFiltradoCardString.includes( valorFiltroString ) )
+				if( valorCampoFiltradoCardString.toUpperCase().includes( valorFiltroString.toUpperCase().trim() ) )
 				{
 					cardsRelatorioComFiltro.push( cardRelatorio );
 				}
