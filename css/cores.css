@@ -3,21 +3,11 @@
 	background-color: transparent;
 }
 
-.col .bg-color-transparent
-{
-	background-color: transparent;
-}
-
 .custom-container
 {
 	background-image: linear-gradient(rgb(231, 185, 53), rgb(205, 102, 81));
 	background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-.col
-{
-	background-color: #FFFFFF;
 }
 
 .white-background

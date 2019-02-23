@@ -1,5 +1,4 @@
-var corpoTabelaRelatorio = $( '#corpoTabelaRelatorio' );
-
+// Text Areas de Busca
 var buscarNumero = $( '#buscarNumero' );
 var buscarLista = $( '#buscarLista' );
 var buscarTitulo = $( '#buscarTitulo' );
@@ -15,3 +14,6 @@ var buscarDataEF = $( '#buscarDataEF' );
 var buscarABAP = $( '#buscarABAP' );
 var buscarInicioConstrucao = $( '#buscarInicioConstrucao' );
 var buscarFimConstrucao = $( '#buscarFimConstrucao' );
+
+// Corpo da Tabela de Relatório
+var corpoTabelaRelatorio = $( '#corpoTabelaRelatorio' );
