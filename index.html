@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Language" content="pt-br">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="copyright" content="Accenture Brasil">
+		<meta name="author" content="miguel.b.gomes@accenture.com">
+		<meta name="robots" content="noindex, nofollow">
+
+		<title>Relatório Trello</title>		
+		
+		<!--CSS-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+		<link type="text/css" rel="stylesheet" href="css/cores.css" />
+		<link type="text/css" rel="stylesheet" href="css/dimensoes.css" />
+	</head>
+
+	<body class="custom-container">
+		<div class="row">
+			<div class="col bg-color-transparent">
+				<table class="table table-striped table-bordered table-hover white-background">
+					<thead>
+						<tr>
+							<th>Número</th>
+							<th>Lista</th>
+							<th>Título</th>
+							<th>Etiqueta</th>
+							<th>Projeto</th>
+							<th>Ticket Number</th>
+							<th>Funcional</th>
+							<th>Módulo Funcional</th>
+							<th>Horas ABAP</th>
+							<th>Limite Construção</th>
+							<th>Data Release</th>
+							<th>Data EF</th>
+							<th>ABAP</th>
+							<th>Início Construção</th>
+							<th>Fim Construção</th>
+						</tr>
+						
+						<tr>
+							<td><textarea id="buscarNumero" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarLista" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarTitulo" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarEtiqueta" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarProjeto" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarTicketNumber" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarFuncional" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarModuloFuncional" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarHorasABAP" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarLimiteConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarDataRelease" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarDataEF" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarABAP" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarInicioConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarFimConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+						</tr>
+					</thead>
+					
+					<tbody id="corpoTabelaRelatorio"></tbody>
+				</table>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+		<script type="text/javascript" src="js/constantes.js"></script>
+		<script type="text/javascript" src="js/elementosTela.js"></script>
+		<script type="text/javascript" src="js/variaveisGlobais.js"></script>
+		<script type="text/javascript" src="js/funcoesGet.js"></script>
+		<script type="text/javascript" src="js/eventosAjax.js"></script>
+		<script type="text/javascript" src="js/configsReqAjax.js"></script>
+		<script type="text/javascript" src="js/carregamentoDadosTrello.js"></script>
+		<script type="text/javascript" src="js/atualizacaoElementosTela.js"></script>
+		<script type="text/javascript" src="js/eventosGUI.js"></script>
+	</body>
+</html>

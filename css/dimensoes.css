@@ -1,0 +1,89 @@
+html
+{
+	height: 100%;
+}
+
+.custom-container
+{
+	/*margin: 0;*/
+	padding-top: 1%;
+	padding-left: 2%;
+	padding-right: 3%;
+	height: 100%;
+}
+
+.logo
+{
+	margin-top:  10px;
+    margin-left: 10px;
+	width: 85%;
+}
+
+.total-horas-abap
+{
+	padding-top: 3%;	
+}
+
+.row
+{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.inner-row
+{
+	margin-bottom: 0px;
+}
+
+.col
+{
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+.inner-col
+{
+	margin-right: 0px;
+}
+
+.col h1
+{
+	text-align: center;
+	font-size: 1.0em;
+}
+
+.col h2
+{
+	text-align: center;
+	font-size: 3.0em;
+}
+
+.row .table
+{
+	font-size: 0.80em;
+}
+
+.row .table th
+{
+	border-top: 0px;
+}
+
+.td-titulo-card
+{
+	max-width: 200px;
+}
+
+textarea
+{
+	resize: none;
+}
+
+.carousel-item table thead th
+{
+	font-size: 0.60em;
+}
+
+.carousel-item table tbody td
+{
+	font-size: 0.60em;
+}
