@@ -43,3 +43,5 @@ const CAMPO_FILTRO_DATA_EF 			 = 'dataEF';
 const CAMPO_FILTRO_ABAP 			 = 'ABAP';
 const CAMPO_FILTRO_INICIO_CONSTRUCAO = 'inicioConstrucao';
 const CAMPO_FILTRO_FIM_CONSTRUCAO    = 'fimConstrucao';
+
+const TAMANHO_MAXIMO_TEXTO_TITULO = 33;

@@ -407,6 +407,20 @@ function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 	return cardsRelatorioComFiltros;
 }
 
+function obterTextoCampoTitulo( titulo )
+{
+	var textoTitulo = '';
+	
+	textoTitulo = obterTextoCampoTabelaRelatorio( titulo );
+	
+	if( textoTitulo.length > TAMANHO_MAXIMO_TEXTO_TITULO )
+	{
+		textoTitulo = textoTitulo.substr( 0, TAMANHO_MAXIMO_TEXTO_TITULO ).trim() + '...';
+	}
+	
+	return textoTitulo;
+}
+
 function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoard )
 {
 	var textoCorpoTabelaRelatorio = '';
@@ -419,10 +433,12 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 	{
 		var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
 		
+		
+		
 		textoCorpoTabelaRelatorio += '<tr>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.numero ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.lista ) + '</td>' +
-									 '<td class="td-titulo-card">' + obterTextoCampoTabelaRelatorio( cardRelatorio.titulo ) + '</td>' +
+									 '<td class="td-titulo-card">' + obterTextoCampoTitulo( cardRelatorio.titulo ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.etiqueta ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.projeto ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.ticketNumber ) + '</td>' +
