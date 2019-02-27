@@ -456,3 +456,94 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 	
 	return textoCorpoTabelaRelatorio;
 }
+
+function obterNomeArquivoTXT()
+{
+	var nomeArquivoTXT = '';
+	
+	var dataHora = new Date();
+	
+	nomeArquivoTXT = TEMPLATE_NOME_ARQUIVO_TXT.replace( '[ano]',  dataHora.getFullYear() )
+											  .replace( '[mes]',  obterStringNumeroZerosEsquerda( dataHora.getMonth() + 1, 1 ) )
+											  .replace( '[dia]',  obterStringNumeroZerosEsquerda( dataHora.getDate(), 1 ) )
+											  .replace( '[hora]', obterStringNumeroZerosEsquerda( dataHora.getHours(), 1 ) )
+											  .replace( '[min]',  obterStringNumeroZerosEsquerda( dataHora.getMinutes(), 1 ) )
+											  .replace( '[seg]',  obterStringNumeroZerosEsquerda( dataHora.getSeconds(), 1 ) );
+	
+	return nomeArquivoTXT;
+}
+
+function downloadArquivo( dados, nomeArquivo, tipoMIME )
+{
+    var arquivo = new Blob( [dados], { type: tipoMIME } );
+	
+    if( window.navigator.msSaveOrOpenBlob ) // IE10+
+	{
+        window.navigator.msSaveOrOpenBlob( arquivo, nomeArquivo );
+	}
+    else // Outros navegadores
+	{ 
+        var a = document.createElement( 'a' );
+        
+		var url = URL.createObjectURL( arquivo );
+				
+        a.href = url;
+		
+        a.download = nomeArquivo;
+		
+        document.body.appendChild( a );
+		
+        a.click();
+		
+        setTimeout
+		(
+			function()
+			{
+				document.body.removeChild( a );
+				window.URL.revokeObjectURL( url );  
+			},
+			0
+		);
+    }
+}
+
+function obterConteudoRelatorioTXT( cardsRelatorio )
+{
+	var conteudoRelatorioTXT = 'Número;Lista;Título;Etiqueta;Projeto;Ticket Number;Funcional;Módulo Funcional;Horas ABAP;Limite Construção;Data Release;Data EF;ABAP;Início Construção;Fim Construção;\n';
+	
+	for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
+	{
+		cardRelatorio = cardsRelatorio[indiceCardRelatorio];
+		
+		conteudoRelatorioTXT += obterTextoCampoTabelaRelatorio( cardRelatorio.numero )		   	 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.lista )		   	 + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.titulo ) 		   	 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.etiqueta ) 		 + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.projeto ) 		 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.ticketNumber ) 	 + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.funcional ) 	   	 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.moduloFuncional )  + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.horasABAP ) 	   	 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.limiteConstrucao ) + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.dataRelease ) 	 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.dataEF ) 		   	 + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.ABAP ) 			 + ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.inicioConstrucao ) + ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.fimConstrucao )    + ';\n';
+	}
+	
+	return conteudoRelatorioTXT;
+}
+
+function exportarRelatorioTXT()
+{
+	var nomeArquivoTXT = obterNomeArquivoTXT();
+	
+	var cardsRelatorio = obterObjetosCardsRelatorio( cardsCarregados, listasCarregadas, camposPersonalizadosCarregados );
+	
+	cardsRelatorio = obterCardsRelatorioBuscadosComFiltros( cardsRelatorio );	
+	
+	var conteudoRelatorioTXT = obterConteudoRelatorioTXT( cardsRelatorio );
+	
+	downloadArquivo( conteudoRelatorioTXT, nomeArquivoTXT, MIME_TYPE_TEXT_PLAIN );
+}

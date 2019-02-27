@@ -1,3 +1,8 @@
+function inicializarBotoes()
+{
+	botaoExportarTXT.click( exportarRelatorioTXT );
+}
+
 function inicializarTextAreas()
 {
 	buscarNumero[0].oninput = atualizarElementosTela;
@@ -19,6 +24,8 @@ function inicializarTextAreas()
 
 function inicializarInputs()
 {
+	inicializarBotoes()
+	
 	inicializarTextAreas();
 }
 

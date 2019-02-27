@@ -9,6 +9,8 @@ const TEMPLATE_URL_BOARD_CAMPOS_PERSONALIZADOS = 'https://api.trello.com/1/board
 const TEMPLATE_URL_CARDS = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&attachments=true&actions=all&key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?cards=all&card_fields=all&filter=open&fields=all&key=' + API_KEY + '&token=' + TOKEN;
 
+const TEMPLATE_NOME_ARQUIVO_TXT = 'relatorio_[ano]_[mes]_[dia]_[hora]_[min]_[seg].txt';
+
 const TIPO_REQ_AJAX_GET = 'get';
 
 const TIPO_DADO_AJAX_JSON = 'json';
@@ -45,3 +47,5 @@ const CAMPO_FILTRO_INICIO_CONSTRUCAO = 'inicioConstrucao';
 const CAMPO_FILTRO_FIM_CONSTRUCAO    = 'fimConstrucao';
 
 const TAMANHO_MAXIMO_TEXTO_TITULO = 33;
+
+const MIME_TYPE_TEXT_PLAIN = 'text/plain';

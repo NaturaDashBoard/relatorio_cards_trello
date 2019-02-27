@@ -15,5 +15,8 @@ var buscarABAP = $( '#buscarABAP' );
 var buscarInicioConstrucao = $( '#buscarInicioConstrucao' );
 var buscarFimConstrucao = $( '#buscarFimConstrucao' );
 
-// Corpo da Tabela de RelatÃ³rio
+// Corpo da Tabela de Relatório
 var corpoTabelaRelatorio = $( '#corpoTabelaRelatorio' );
+
+// Bot?es
+var botaoExportarTXT = $( '#botaoExportarTXT' );
