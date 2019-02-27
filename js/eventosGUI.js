@@ -1,6 +1,7 @@
 function inicializarBotoes()
 {
 	botaoExportarTXT.click( exportarRelatorioTXT );
+	botaoLimparFiltros.click( limparFiltrosBusca );
 }
 
 function inicializarTextAreas()
