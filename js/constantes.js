@@ -6,8 +6,8 @@ const ID_BOARD_GESTAO_DEMANDAS_NATURA = '5b688404339eca3b994948c1';
 const ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA = '5beb929f5c13a07903fd5df0';
 
 const TEMPLATE_URL_BOARD_CAMPOS_PERSONALIZADOS = 'https://api.trello.com/1/boards/[BOARD_ID]/customFields?key=' + API_KEY + '&token=' + TOKEN;
-const TEMPLATE_URL_CARDS = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&attachments=true&actions=all&key=' + API_KEY + '&token=' + TOKEN;
-const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?cards=all&card_fields=all&filter=open&fields=all&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_CARDS = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?filter=open&key=' + API_KEY + '&token=' + TOKEN;
 
 const TEMPLATE_NOME_ARQUIVO_TXT = 'relatorio_[ano]_[mes]_[dia]_[hora]_[min]_[seg].txt';
 
