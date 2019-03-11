@@ -25,7 +25,7 @@ function inicializarTextAreas()
 
 function inicializarInputs()
 {
-	inicializarBotoes()
+	inicializarBotoes();
 	
 	inicializarTextAreas();
 }
