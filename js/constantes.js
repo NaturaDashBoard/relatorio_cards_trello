@@ -47,6 +47,11 @@ const CAMPO_FILTRO_DATA_EF 			 = 'dataEF';
 const CAMPO_FILTRO_ABAP 			 = 'ABAP';
 const CAMPO_FILTRO_INICIO_CONSTRUCAO = 'inicioConstrucao';
 const CAMPO_FILTRO_FIM_CONSTRUCAO    = 'fimConstrucao';
+const CAMPO_FILTRO_PROJECT_CRIADO 	 = 'projectCriado';
+const CAMPO_FILTRO_PROJECT_PLANEJADO = 'projectPlanejado';
+
+const OPCAO_FILTRO_BOOLEANO_MARCADO 	= 'Marcado';
+const OPCAO_FILTRO_BOOLEANO_DESMARCADO  = 'Desmarcado';
 
 const TAMANHO_MAXIMO_TEXTO_TITULO = 33;
 

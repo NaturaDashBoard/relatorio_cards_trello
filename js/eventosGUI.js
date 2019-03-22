@@ -21,6 +21,8 @@ function inicializarTextAreas()
 	buscarABAP[0].oninput = atualizarElementosTela;
 	buscarInicioConstrucao[0].oninput = atualizarElementosTela;
 	buscarFimConstrucao[0].oninput = atualizarElementosTela;
+	buscarProjectCriado[0].oninput = atualizarElementosTela;
+	buscarProjectPlanejado[0].oninput = atualizarElementosTela;
 }
 
 function inicializarInputs()

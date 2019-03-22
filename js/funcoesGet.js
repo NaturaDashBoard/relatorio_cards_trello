@@ -409,6 +409,54 @@ function obterCardsRelatorioBuscadosComFiltro( cardsRelatorio, campoFiltro, valo
 	return cardsRelatorioComFiltro;
 }
 
+function obterCardsRelatorioBuscadosComFiltroBooleano( cardsRelatorio, campoFiltro, valorFiltro )
+{
+	var cardsRelatorioComFiltro = [];
+	
+	if( valorFiltro == OPCAO_FILTRO_BOOLEANO_MARCADO )
+	{
+		for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
+		{
+			var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
+			
+			var valorCampoFiltradoCard = cardRelatorio[campoFiltro];
+			
+			if
+			(
+				valorCampoFiltradoCard != undefined
+				&& valorCampoFiltradoCard
+			)
+			{
+				cardsRelatorioComFiltro.push( cardRelatorio );
+			}
+		}
+	}
+	else if( valorFiltro == OPCAO_FILTRO_BOOLEANO_DESMARCADO )
+	{
+		for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
+		{
+			var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
+			
+			var valorCampoFiltradoCard = cardRelatorio[campoFiltro];
+			
+			if
+			(
+				valorCampoFiltradoCard == undefined
+				|| !valorCampoFiltradoCard
+			)
+			{
+				cardsRelatorioComFiltro.push( cardRelatorio );
+			}
+		}		
+	}
+	else
+	{
+		cardsRelatorioComFiltro = cardsRelatorio;
+	}
+	
+	return cardsRelatorioComFiltro;
+}
+
 function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 {
 	var cardsRelatorioComFiltros = cardsRelatorio;
@@ -428,6 +476,8 @@ function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_ABAP, buscarABAP.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_INICIO_CONSTRUCAO, buscarInicioConstrucao.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_FIM_CONSTRUCAO, buscarFimConstrucao.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroBooleano( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJECT_CRIADO, buscarProjectCriado.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroBooleano( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJECT_PLANEJADO, buscarProjectPlanejado.val() );
 	
 	return cardsRelatorioComFiltros;
 }
