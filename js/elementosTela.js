@@ -15,6 +15,10 @@ var buscarABAP 			   = $( '#buscarABAP' );
 var buscarInicioConstrucao = $( '#buscarInicioConstrucao' );
 var buscarFimConstrucao    = $( '#buscarFimConstrucao' );
 
+// Select Options de Busca
+var buscarProjectCriado    = $( '#buscarProjectCriado' );
+var buscarProjectPlanejado = $( '#buscarProjectPlanejado' );
+
 // Corpo da Tabela de Relatório
 var corpoTabelaRelatorio = $( '#corpoTabelaRelatorio' );
 

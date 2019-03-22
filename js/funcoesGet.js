@@ -195,7 +195,9 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 		dataEF: undefined,
 		ABAP: undefined,
 		inicioConstrucao: undefined,
-		fimConstrucao: undefined
+		fimConstrucao: undefined,
+		projectCriado: undefined,
+		projectPlanejado: undefined
 	};
 	
 	// Número
@@ -308,6 +310,22 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 		var dataFimConstrucao = new Date( valorCampoPersonalizadoFimConstrucao['date'] );
 		
 		cardRelatorio.fimConstrucao = obterStringDataObjetoDate( dataFimConstrucao, '/' );
+	}
+	
+	// Project - Criado
+	var idCampoPersonalizadoProjectCriado = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJECT_CRIADO, camposPersonalizadosBoard );
+	var valorCampoPersonalizadoProjectCriado = obterValorCampoPersonalizadoCard( idCampoPersonalizadoProjectCriado, itensCamposPersonalizadosCard, camposPersonalizadosBoard );			
+	if( valorCampoPersonalizadoProjectCriado != undefined )
+	{
+		cardRelatorio.projectCriado = valorCampoPersonalizadoProjectCriado['checked'];
+	}
+	
+	// Project - Planejado
+	var idCampoPersonalizadoProjectPlanejado = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJECT_PLANEJADO, camposPersonalizadosBoard );
+	var valorCampoPersonalizadoProjectPlanejado = obterValorCampoPersonalizadoCard( idCampoPersonalizadoProjectPlanejado, itensCamposPersonalizadosCard, camposPersonalizadosBoard );			
+	if( valorCampoPersonalizadoProjectPlanejado != undefined )
+	{
+		cardRelatorio.projectPlanejado = valorCampoPersonalizadoProjectPlanejado['checked'];
 	}
 	
 	return cardRelatorio;
@@ -428,6 +446,26 @@ function obterTextoCampoTitulo( titulo )
 	return textoTitulo;
 }
 
+function obterCheckboxCampoTabelaRelatorio( campo )
+{
+	var textoCampo = '';
+	
+	if
+	(
+		campo == undefined
+		|| !campo
+	)
+	{
+		textoCampo = '<input type="checkbox" disabled>';
+	}
+	else
+	{
+		textoCampo = '<input type="checkbox" disabled checked>';
+	}
+	
+	return textoCampo;
+}
+
 function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoard )
 {
 	var textoCorpoTabelaRelatorio = '';
@@ -458,6 +496,8 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.ABAP ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.inicioConstrucao ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.fimConstrucao ) + '</td>' +
+									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectCriado ) + '</td>' +
+									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectPlanejado ) + '</td>' +
 									 '</tr>';
 	}
 	
@@ -514,29 +554,43 @@ function downloadArquivo( dados, nomeArquivo, tipoMIME )
     }
 }
 
+function obterMarcacaoCampoTabelaRelatorio( campo )
+{
+	var textoCampo = '';
+	
+	if( campo )
+	{
+		textoCampo = 'X';
+	}
+	
+	return textoCampo;
+}
+
 function obterConteudoRelatorioTXT( cardsRelatorio )
 {
-	var conteudoRelatorioTXT = 'Número;Lista;Título;Etiqueta;Projeto;Ticket Number;Funcional;Módulo Funcional;Horas ABAP;Limite Construção;Data Release;Data EF;ABAP;Início Construção;Fim Construção;\n';
+	var conteudoRelatorioTXT = 'Número;Lista;Título;Etiqueta;Projeto;Ticket Number;Funcional;Módulo Funcional;Horas ABAP;Limite Construção;Data Release;Data EF;ABAP;Início Construção;Fim Construção;Project - Criado;Project - Planejado;\n';
 	
 	for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
 	{
 		cardRelatorio = cardsRelatorio[indiceCardRelatorio];
 		
-		conteudoRelatorioTXT += obterTextoCampoTabelaRelatorio( cardRelatorio.numero )		   	 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.lista )		   	 + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.titulo ) 		   	 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.etiqueta ) 		 + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.projeto ) 		 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.ticketNumber ) 	 + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.funcional ) 	   	 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.moduloFuncional )  + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.horasABAP ) 	   	 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.limiteConstrucao ) + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.dataRelease ) 	 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.dataEF ) 		   	 + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.ABAP ) 			 + ';' +
-							    obterTextoCampoTabelaRelatorio( cardRelatorio.inicioConstrucao ) + ';' +
-								obterTextoCampoTabelaRelatorio( cardRelatorio.fimConstrucao )    + ';\n';
+		conteudoRelatorioTXT += obterTextoCampoTabelaRelatorio( cardRelatorio.numero )		   	 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.lista )		   	 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.titulo ) 		   	 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.etiqueta ) 		 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.projeto ) 		 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.ticketNumber ) 	 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.funcional ) 	   	 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.moduloFuncional )  	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.horasABAP ) 	   	 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.limiteConstrucao ) 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.dataRelease ) 	 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.dataEF ) 		   	 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.ABAP ) 			 	+ ';' +
+							    obterTextoCampoTabelaRelatorio( cardRelatorio.inicioConstrucao ) 	+ ';' +
+								obterTextoCampoTabelaRelatorio( cardRelatorio.fimConstrucao )    	+ ';' + 
+							    obterMarcacaoCampoTabelaRelatorio( cardRelatorio.projectCriado ) 	+ ';' +
+								obterMarcacaoCampoTabelaRelatorio( cardRelatorio.projectPlanejado ) + ';\n';
 	}
 	
 	return conteudoRelatorioTXT;
