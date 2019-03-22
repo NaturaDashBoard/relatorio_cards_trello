@@ -146,7 +146,14 @@ function obterLabelCard( card )
 	
 	var labelsCard = card['labels'];
 	
-	label = labelsCard[0]['name'];
+	if
+	(
+		labelsCard != undefined
+		&& labelsCard.length > 0
+	)
+	{
+		label = labelsCard[0]['name'];
+	}
 	
 	return label;
 }
