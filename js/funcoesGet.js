@@ -13,6 +13,11 @@ function obterURLListasComBoardID( idBoard )
 	return TEMPLATE_URL_LISTAS.replace( '[BOARD_ID]', idBoard );
 }
 
+function obterURLAtualizarCampoPersonalizadoCard( idCard, idCampoPersonalizado )
+{
+	return TEMPLATE_URL_ATUALIZAR_CAMPO_PERSONALIZADO_CARD.replace( '[CARD_ID]', idCard ).replace( '[CUSTOM_FIELD_ID]', idCampoPersonalizado );
+}
+
 function obterIDCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizados )
 {
 	var idCampoPersonalizado = undefined;
@@ -181,6 +186,7 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 {
 	var cardRelatorio = 
 	{
+		id: undefined,
 		numero: undefined,
 		titulo: undefined,
 		lista: undefined,
@@ -199,6 +205,9 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 		projectCriado: undefined,
 		projectPlanejado: undefined
 	};
+	
+	// ID (Não exibido no Relatório)
+	cardRelatorio.id = card['id'];
 	
 	// Número
 	cardRelatorio.numero = card['idShort'];
@@ -496,9 +505,23 @@ function obterTextoCampoTitulo( titulo )
 	return textoTitulo;
 }
 
-function obterCheckboxCampoTabelaRelatorio( campo )
+function enviarAtualizacaoCampoPersonalizadoCardBooleano( idCard, idCampoPersonalizado )
 {
-	var textoCampo = '';
+	var checkboxModificado = $( '#' + idCard + '_' + idCampoPersonalizado );
+	
+	var marcacaoCheckboxModificado = checkboxModificado.prop( 'checked' );
+	
+	var valorCampoPersonalizadoCard =
+	{
+		value: { checked: marcacaoCheckboxModificado.toString() }
+	};
+	
+	enviarAssincCampoPersonalizadoCard( idCard, idCampoPersonalizado, valorCampoPersonalizadoCard );
+}
+
+function obterCheckboxCampoTabelaRelatorio( campo, idCard, idCampoPersonalizado )
+{
+	var checkboxCampo = '';
 	
 	if
 	(
@@ -506,14 +529,14 @@ function obterCheckboxCampoTabelaRelatorio( campo )
 		|| !campo
 	)
 	{
-		textoCampo = '<input type="checkbox" disabled>';
+		checkboxCampo = '<input id="' + idCard + '_' + idCampoPersonalizado + '" type="checkbox" oninput="' + "enviarAtualizacaoCampoPersonalizadoCardBooleano( '" + idCard + "', '" + idCampoPersonalizado + "'" + ' )" />';
 	}
 	else
 	{
-		textoCampo = '<input type="checkbox" disabled checked>';
+		checkboxCampo = '<input id="' + idCard + '_' + idCampoPersonalizado + '" type="checkbox" oninput="' + "enviarAtualizacaoCampoPersonalizadoCardBooleano( '" + idCard + "', '" + idCampoPersonalizado + "'" + ' )" checked />';
 	}
 	
-	return textoCampo;
+	return checkboxCampo;
 }
 
 function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoard )
@@ -522,13 +545,14 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 	
 	var cardsRelatorio = obterObjetosCardsRelatorio( cards, listas, camposPersonalizadosBoard );
 	
+	var idCampoPersonalizadoProjectCriado = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJECT_CRIADO, camposPersonalizadosBoard );
+	var idCampoPersonalizadoProjectPlanejado = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJECT_PLANEJADO, camposPersonalizadosBoard );
+	
 	cardsRelatorio = obterCardsRelatorioBuscadosComFiltros( cardsRelatorio );
 	
 	for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
 	{
 		var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
-		
-		
 		
 		textoCorpoTabelaRelatorio += '<tr>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.numero ) + '</td>' +
@@ -546,8 +570,8 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.ABAP ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.inicioConstrucao ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.fimConstrucao ) + '</td>' +
-									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectCriado ) + '</td>' +
-									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectPlanejado ) + '</td>' +
+									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectCriado, cardRelatorio.id, idCampoPersonalizadoProjectCriado ) + '</td>' +
+									 '<td>' + obterCheckboxCampoTabelaRelatorio( cardRelatorio.projectPlanejado, cardRelatorio.id, idCampoPersonalizadoProjectPlanejado ) + '</td>' +
 									 '</tr>';
 	}
 	

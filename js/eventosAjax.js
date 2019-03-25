@@ -104,3 +104,34 @@ function failGetListas( jqXHR, textStatus, data )
 	console.log( data );
 	console.groupEnd( "data" );		
 }
+
+/* PUT CAMPO PERSONALIZADO CARD */
+
+function beforeSendPutCampoPersonalizadoCard()
+{
+	console.log( 'Enviando Requisição AJAX para atualizar Campo Personalizado de Card' );
+}
+
+function donePutCampoPersonalizadoCard( data )
+{
+	console.group( "data" );
+	console.log( data );
+	console.groupEnd( "data" );
+}
+
+function failPutCampoPersonalizadoCard( jqXHR, textStatus, data )
+{
+	console.log( 'Ocorreu um Erro na Requisição AJAX para atualizar Campo Personalizado de Card' );
+	
+	console.group( "jqXHR" );
+	console.log( jqXHR );
+	console.groupEnd( "jqXHR" );
+	
+	console.group( "textStatus" );
+	console.log( textStatus );
+	console.groupEnd( "textStatus" );	
+	
+	console.group( "data" );
+	console.log( data );
+	console.groupEnd( "data" );		
+}
