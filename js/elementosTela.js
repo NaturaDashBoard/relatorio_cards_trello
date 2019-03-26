@@ -1,25 +1,23 @@
 // Text Areas de Busca
 var buscarNumero 		   = $( '#buscarNumero' );
-var buscarLista 		   = $( '#buscarLista' );
 var buscarTitulo 		   = $( '#buscarTitulo' );
-var buscarEtiqueta 		   = $( '#buscarEtiqueta' );
-var buscarProjeto 		   = $( '#buscarProjeto' );
 var buscarTicketNumber 	   = $( '#buscarTicketNumber' );
-var buscarFuncional 	   = $( '#buscarFuncional' );
-var buscarModuloFuncional  = $( '#buscarModuloFuncional' );
 var buscarHorasABAP 	   = $( '#buscarHorasABAP' );
 var buscarLimiteConstrucao = $( '#buscarLimiteConstrucao' );
-var buscarDataRelease 	   = $( '#buscarDataRelease' );
 var buscarDataEF 		   = $( '#buscarDataEF' );
-var buscarABAP 			   = $( '#buscarABAP' );
 var buscarInicioConstrucao = $( '#buscarInicioConstrucao' );
 var buscarFimConstrucao    = $( '#buscarFimConstrucao' );
 
 // Select Options de Busca
-var buscarProjeto    	   = $( '#buscarProjeto' );
+var buscarABAP 			   = $( '#buscarABAP' );
 var buscarDataRelease	   = $( '#buscarDataRelease' );
+var buscarEtiqueta 		   = $( '#buscarEtiqueta' );
+var buscarFuncional 	   = $( '#buscarFuncional' );
+var buscarLista 		   = $( '#buscarLista' );
+var buscarModuloFuncional  = $( '#buscarModuloFuncional' );
 var buscarProjectCriado    = $( '#buscarProjectCriado' );
 var buscarProjectPlanejado = $( '#buscarProjectPlanejado' );
+var buscarProjeto    	   = $( '#buscarProjeto' );
 
 // Corpo da Tabela de Relatório
 var corpoTabelaRelatorio = $( '#corpoTabelaRelatorio' );

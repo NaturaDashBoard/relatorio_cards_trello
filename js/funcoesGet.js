@@ -527,18 +527,18 @@ function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 	var cardsRelatorioComFiltros = cardsRelatorio;
 	
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_NUMERO, buscarNumero.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_LISTA, buscarLista.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_LISTA, buscarLista.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_TITULO, buscarTitulo.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_ETIQUETA, buscarEtiqueta.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_ETIQUETA, buscarEtiqueta.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJETO, buscarProjeto.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_TICKET_NUMBER, buscarTicketNumber.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_FUNCIONAL, buscarFuncional.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_MODULO_FUNCIONAL, buscarModuloFuncional.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_FUNCIONAL, buscarFuncional.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_MODULO_FUNCIONAL, buscarModuloFuncional.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_HORAS_ABAP, buscarHorasABAP.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_LIMITE_CONSTRUCAO, buscarLimiteConstrucao.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_DATA_RELEASE, buscarDataRelease.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_DATA_EF, buscarDataEF.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_ABAP, buscarABAP.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_ABAP, buscarABAP.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_INICIO_CONSTRUCAO, buscarInicioConstrucao.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_FIM_CONSTRUCAO, buscarFimConstrucao.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroBooleano( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJECT_CRIADO, buscarProjectCriado.val() );
@@ -775,11 +775,11 @@ function obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPer
 	return valoresOpcoesCampoPersonalizado;
 }
 
-function obterProjetosParaFiltro( camposPersonalizadosBoard )
+function obterOpcoesParaFiltro( nomeCampoPersonalizado, camposPersonalizadosBoard )
 {
 	var projetos = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
 	
-	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
+	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard );
 	
 	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoesProjeto.length; ++indiceValorOpcaoProjeto )
 	{
