@@ -43,17 +43,31 @@ function obterConfigsReqAssincGetListas( idBoard )
 
 // Dados Enviados para o Trello
 
+/*
 function obterConfigsReqAssincPutCampoPersonalizadoCard( idCard, idCampoPersonalizado, valorCampoPersonalizadoCard )
 {
-	var configsReqAssincGetCamposPersonalizados =
+	var configsReqAssincPutCampoPersonalizadoCard =
 	{
-		url: obterURLCamposPersonalizadosComBoardID( idCard, idCampoPersonalizado ),
+		url: obterURLAtualizarCampoPersonalizadoCard( idCard, idCampoPersonalizado ),
 		type: TIPO_REQ_AJAX_PUT,
 		contentType: 'application/json',
 		data: valorCampoPersonalizadoCard,
-		//dataType: TIPO_DADO_AJAX_JSON,
+		dataType: TIPO_DADO_AJAX_JSON,
 		beforeSend: beforeSendPutCampoPersonalizadoCard
 	};
 	
-	return configsReqAssincGetCamposPersonalizados;
+	return configsReqAssincPutCampoPersonalizadoCard;
+}
+*/
+
+function obterConfigsReqAssincPutCampoPersonalizadoCard( valorCampoPersonalizadoCard )
+{
+	var configsReqAssincPutCampoPersonalizadoCard =
+	{
+		body: JSON.stringify( valorCampoPersonalizadoCard ),
+		method: TIPO_REQ_AJAX_PUT,
+		headers: { 'content-type': 'application/json' }
+	};
+	
+	return configsReqAssincPutCampoPersonalizadoCard;
 }

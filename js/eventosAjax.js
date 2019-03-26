@@ -107,6 +107,7 @@ function failGetListas( jqXHR, textStatus, data )
 
 /* PUT CAMPO PERSONALIZADO CARD */
 
+/*
 function beforeSendPutCampoPersonalizadoCard()
 {
 	console.log( 'Enviando Requisição AJAX para atualizar Campo Personalizado de Card' );
@@ -135,3 +136,6 @@ function failPutCampoPersonalizadoCard( jqXHR, textStatus, data )
 	console.log( data );
 	console.groupEnd( "data" );		
 }
+*/
+
+

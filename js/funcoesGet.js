@@ -182,6 +182,22 @@ function obterNomeListaCard( card, listas )
 	return nomeLista;
 }
 
+function stringToBoolean( booleanString )
+{
+	var result = undefined;
+	
+	if( booleanString == 'true' )
+	{
+		result = true;
+	}
+	else if( booleanString == 'false' )
+	{
+		result = false;
+	}
+	
+	return result;
+}
+
 function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 {
 	var cardRelatorio = 
@@ -326,7 +342,7 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 	var valorCampoPersonalizadoProjectCriado = obterValorCampoPersonalizadoCard( idCampoPersonalizadoProjectCriado, itensCamposPersonalizadosCard, camposPersonalizadosBoard );			
 	if( valorCampoPersonalizadoProjectCriado != undefined )
 	{
-		cardRelatorio.projectCriado = valorCampoPersonalizadoProjectCriado['checked'];
+		cardRelatorio.projectCriado = stringToBoolean( valorCampoPersonalizadoProjectCriado['checked'] );
 	}
 	
 	// Project - Planejado
@@ -334,7 +350,7 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 	var valorCampoPersonalizadoProjectPlanejado = obterValorCampoPersonalizadoCard( idCampoPersonalizadoProjectPlanejado, itensCamposPersonalizadosCard, camposPersonalizadosBoard );			
 	if( valorCampoPersonalizadoProjectPlanejado != undefined )
 	{
-		cardRelatorio.projectPlanejado = valorCampoPersonalizadoProjectPlanejado['checked'];
+		cardRelatorio.projectPlanejado = stringToBoolean( valorCampoPersonalizadoProjectPlanejado['checked'] );
 	}
 	
 	return cardRelatorio;
@@ -522,6 +538,22 @@ function enviarAtualizacaoCampoPersonalizadoCardBooleano( idCard, idCampoPersona
 function obterCheckboxCampoTabelaRelatorio( campo, idCard, idCampoPersonalizado )
 {
 	var checkboxCampo = '';
+	
+	var cbox = $( '#' + idCard + '_' + idCampoPersonalizado );
+	
+	if
+	(
+		cbox != undefined
+		&& cbox.length > 0
+	)
+	{
+		var cboxMarcado = cbox.prop( 'checked' );
+		
+		if( campo != cboxMarcado )
+		{
+			campo = cboxMarcado;
+		}
+	}
 	
 	if
 	(
