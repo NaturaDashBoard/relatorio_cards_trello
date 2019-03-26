@@ -16,6 +16,8 @@ var buscarInicioConstrucao = $( '#buscarInicioConstrucao' );
 var buscarFimConstrucao    = $( '#buscarFimConstrucao' );
 
 // Select Options de Busca
+var buscarProjeto    	   = $( '#buscarProjeto' );
+var buscarDataRelease	   = $( '#buscarDataRelease' );
 var buscarProjectCriado    = $( '#buscarProjectCriado' );
 var buscarProjectPlanejado = $( '#buscarProjectPlanejado' );
 

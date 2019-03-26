@@ -4,12 +4,6 @@
 
 function enviarAssincCampoPersonalizadoCard( idCard, idCampoPersonalizado, valorCampoPersonalizadoCard )
 {
-	/*
-	$.ajax( obterConfigsReqAssincPutCampoPersonalizadoCard( idCard, idCampoPersonalizado, valorCampoPersonalizadoCard ) )
-		.done( donePutCampoPersonalizadoCard )
-		.fail( failPutCampoPersonalizadoCard );
-	*/
-	
 	fetch
 	(
 		obterURLAtualizarCampoPersonalizadoCard( idCard, idCampoPersonalizado ),

@@ -52,6 +52,8 @@ const CAMPO_FILTRO_FIM_CONSTRUCAO    = 'fimConstrucao';
 const CAMPO_FILTRO_PROJECT_CRIADO 	 = 'projectCriado';
 const CAMPO_FILTRO_PROJECT_PLANEJADO = 'projectPlanejado';
 
+const OPCAO_FILTRO_TODOS 				= 'Todos';
+const OPCAO_FILTRO_NAO_DEFINIDO			= 'N/D';
 const OPCAO_FILTRO_BOOLEANO_MARCADO 	= 'Marcado';
 const OPCAO_FILTRO_BOOLEANO_DESMARCADO  = 'Desmarcado';
 

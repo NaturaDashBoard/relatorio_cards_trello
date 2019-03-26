@@ -482,6 +482,46 @@ function obterCardsRelatorioBuscadosComFiltroBooleano( cardsRelatorio, campoFilt
 	return cardsRelatorioComFiltro;
 }
 
+function obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorio, campoFiltro, valorFiltro )
+{
+	var cardsRelatorioComFiltro = [];
+	
+	if( valorFiltro != OPCAO_FILTRO_TODOS )
+	{
+		var valorFiltroString = valorFiltro.toString(); 
+		
+		for( indiceCardRelatorio = 0; indiceCardRelatorio < cardsRelatorio.length; ++indiceCardRelatorio )
+		{
+			var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
+			
+			var valorCampoFiltradoCard = cardRelatorio[campoFiltro];
+			
+			if( valorCampoFiltradoCard == undefined )
+			{
+				if( valorFiltro == OPCAO_FILTRO_NAO_DEFINIDO )
+				{
+					cardsRelatorioComFiltro.push( cardRelatorio );
+				}
+			}
+			else if( valorFiltro != OPCAO_FILTRO_NAO_DEFINIDO )
+			{
+				var valorCampoFiltradoCardString = valorCampoFiltradoCard.toString();
+				
+				if( valorCampoFiltradoCardString.toUpperCase().includes( valorFiltroString.toUpperCase().trim() ) )
+				{
+					cardsRelatorioComFiltro.push( cardRelatorio );
+				}
+			}
+		}		
+	}
+	else
+	{
+		cardsRelatorioComFiltro = cardsRelatorio;
+	}
+	
+	return cardsRelatorioComFiltro;
+}
+
 function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 {
 	var cardsRelatorioComFiltros = cardsRelatorio;
@@ -490,13 +530,13 @@ function obterCardsRelatorioBuscadosComFiltros( cardsRelatorio )
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_LISTA, buscarLista.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_TITULO, buscarTitulo.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_ETIQUETA, buscarEtiqueta.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJETO, buscarProjeto.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_PROJETO, buscarProjeto.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_TICKET_NUMBER, buscarTicketNumber.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_FUNCIONAL, buscarFuncional.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_MODULO_FUNCIONAL, buscarModuloFuncional.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_HORAS_ABAP, buscarHorasABAP.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_LIMITE_CONSTRUCAO, buscarLimiteConstrucao.val() );
-	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_DATA_RELEASE, buscarDataRelease.val() );
+	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorioComFiltros, CAMPO_FILTRO_DATA_RELEASE, buscarDataRelease.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_DATA_EF, buscarDataEF.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_ABAP, buscarABAP.val() );
 	cardsRelatorioComFiltros = obterCardsRelatorioBuscadosComFiltro( cardsRelatorioComFiltros, CAMPO_FILTRO_INICIO_CONSTRUCAO, buscarInicioConstrucao.val() );
@@ -713,4 +753,139 @@ function exportarRelatorioTXT()
 	var conteudoRelatorioTXT = obterConteudoRelatorioTXT( cardsRelatorio );
 	
 	downloadArquivo( conteudoRelatorioTXT, nomeArquivoTXT, MIME_TYPE_TEXT_PLAIN );
+}
+
+function obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard )
+{
+	var valoresOpcoesCampoPersonalizado = [];
+	
+	var idCampoPersonalizado = obterIDCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard );
+	
+	var campoPersonalizado = obterCampoPersonalizadoPeloID( idCampoPersonalizado, camposPersonalizadosBoard );
+	
+	var opcoesCampoPersonalizado = campoPersonalizado['options'];
+	
+	for( indiceOpcaoCampoPersonalizado = 0; indiceOpcaoCampoPersonalizado < opcoesCampoPersonalizado.length; ++indiceOpcaoCampoPersonalizado )
+	{
+		var opcaoCampoPersonalizado = opcoesCampoPersonalizado[indiceOpcaoCampoPersonalizado];
+		
+		valoresOpcoesCampoPersonalizado.push( opcaoCampoPersonalizado['value']['text'] );
+	}
+	
+	return valoresOpcoesCampoPersonalizado;
+}
+
+function obterProjetosParaFiltro( camposPersonalizadosBoard )
+{
+	var projetos = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	
+	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosBoard );
+	
+	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoesProjeto.length; ++indiceValorOpcaoProjeto )
+	{
+		var valorOpcaoProjeto = valoresOpcoesProjeto[indiceValorOpcaoProjeto];
+		
+		projetos += '<option value="' + valorOpcaoProjeto + '">' + valorOpcaoProjeto + '</option>';
+	}
+	
+	return projetos;
+}
+
+function obterDataSemTempo( dataComTempo )
+{
+	var dataSemTempo = undefined;
+	
+	dataSemTempo = new Date
+	(
+		dataComTempo.getFullYear(),
+		dataComTempo.getMonth(),
+		dataComTempo.getDate()
+	);
+	
+	return dataSemTempo;
+}
+
+function collectDatas( datas )
+{
+	var datasColetadas = [];
+	
+	for( indiceData = 0; indiceData < datas.length; ++indiceData )
+	{
+		var data = datas[indiceData];
+		
+		var dataJaAdicionada = false;
+		
+		for( indiceDataColetada = 0; indiceDataColetada < datasColetadas.length; ++indiceDataColetada )
+		{
+			var dataColetada = datasColetadas[indiceDataColetada];
+			
+			if( dataColetada.getTime() == data.getTime() )
+			{
+				dataJaAdicionada = true;
+				
+				break;
+			}
+		}
+		
+		if( !dataJaAdicionada )
+		{
+			datasColetadas.push( data );
+		}
+	}
+	
+	return datasColetadas;
+}
+
+function funcaoComparacaoObjetosDate( objetoDateA, objetoDateB )
+{
+	return ( objetoDateA.getTime() > objetoDateB.getTime() ) -
+		   ( objetoDateA.getTime() < objetoDateB.getTime() );
+}
+
+function obterDatasRelease( cards, camposPersonalizadosBoard )
+{
+	var datasRelease = [];
+	
+	var idCampoPersonalizadoDataRelease = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_DATA_RELEASE, camposPersonalizadosBoard );
+	
+	for( indiceCard = 0; indiceCard < cards.length; ++indiceCard )
+	{
+		var card = cards[indiceCard];
+		
+		var itensCamposPersonalizadosCard = card['customFieldItems'];
+				
+		var valorCampoPersonalizadoDataRelease = obterValorCampoPersonalizadoCard( idCampoPersonalizadoDataRelease, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
+		
+		if( valorCampoPersonalizadoDataRelease != undefined )
+		{
+			var dataRelease = new Date( valorCampoPersonalizadoDataRelease['date'] );
+			
+			datasRelease.push( obterDataSemTempo( dataRelease ) );
+		}
+	}
+	
+	datasRelease = collectDatas( datasRelease );
+	
+	datasRelease.sort( funcaoComparacaoObjetosDate );
+	
+	return datasRelease;
+}
+
+function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
+{
+	var releases = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	
+	var datasRelease = obterDatasRelease( cards, camposPersonalizadosBoard );
+	
+	for( indiceDataRelease = 0; indiceDataRelease < datasRelease.length; ++indiceDataRelease )
+	{
+		var dataRelease = datasRelease[indiceDataRelease];
+		
+		var stringDataRelease = obterStringDataObjetoDate( dataRelease, '/' );
+		
+		releases += '<option value="' + stringDataRelease + '">'
+					+ stringDataRelease + '</option>';
+	}
+	
+	return releases;
 }

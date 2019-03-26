@@ -137,5 +137,3 @@ function failPutCampoPersonalizadoCard( jqXHR, textStatus, data )
 	console.groupEnd( "data" );		
 }
 */
-
-
