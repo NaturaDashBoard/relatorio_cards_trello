@@ -777,18 +777,18 @@ function obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPer
 
 function obterOpcoesParaFiltro( nomeCampoPersonalizado, camposPersonalizadosBoard )
 {
-	var projetos = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	var opcoes = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
 	
-	var valoresOpcoesProjeto = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard );
+	var valoresOpcoes = obterValoresOpcoesCampoPersonalizado( nomeCampoPersonalizado, camposPersonalizadosBoard );
 	
-	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoesProjeto.length; ++indiceValorOpcaoProjeto )
+	for( indiceValorOpcaoProjeto = 0; indiceValorOpcaoProjeto < valoresOpcoes.length; ++indiceValorOpcaoProjeto )
 	{
-		var valorOpcaoProjeto = valoresOpcoesProjeto[indiceValorOpcaoProjeto];
+		var valorOpcao = valoresOpcoes[indiceValorOpcaoProjeto];
 		
-		projetos += '<option value="' + valorOpcaoProjeto + '">' + valorOpcaoProjeto + '</option>';
+		opcoes += '<option value="' + valorOpcao + '">' + valorOpcao + '</option>';
 	}
 	
-	return projetos;
+	return opcoes;
 }
 
 function obterDataSemTempo( dataComTempo )
@@ -873,7 +873,7 @@ function obterDatasRelease( cards, camposPersonalizadosBoard )
 
 function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
 {
-	var releases = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	var opcoesReleases = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
 	
 	var datasRelease = obterDatasRelease( cards, camposPersonalizadosBoard );
 	
@@ -883,9 +883,22 @@ function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
 		
 		var stringDataRelease = obterStringDataObjetoDate( dataRelease, '/' );
 		
-		releases += '<option value="' + stringDataRelease + '">'
-					+ stringDataRelease + '</option>';
+		opcoesReleases += '<option value="' + stringDataRelease + '">' + stringDataRelease + '</option>';
 	}
 	
-	return releases;
+	return opcoesReleases;
+}
+
+function obterOpcoesParaFiltroLista( listas )
+{
+	var opcoesListas = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option>';
+	
+	for( indiceLista = 0; indiceLista < listas.length; ++indiceLista )
+	{
+		var lista = listas[indiceLista];
+		
+		opcoesListas += '<option value="' + lista.name + '">' + lista.name + '</option>';
+	}
+	
+	return opcoesListas;	
 }

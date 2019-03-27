@@ -31,16 +31,17 @@ function limparFiltrosBusca()
 	atualizarCorpoTabelaRelatorio();
 }
 
-/*
+
 function atualizarFiltroLista()
 {
 	var valorSelecionado = buscarLista.val();
 	
-	buscarLista.html( obterOpcoesParaFiltro( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosCarregados ) );
+	buscarLista.html( obterOpcoesParaFiltroLista( listasCarregadas ) );
 	
 	buscarLista.val( valorSelecionado );
 }
 
+/*
 function atualizarFiltroEtiqueta()
 {
 	var valorSelecionado = buscarEtiqueta.val();
@@ -107,7 +108,7 @@ function atualizarElementosTela()
 {
 	atualizarCorpoTabelaRelatorio();
 	
-	//atualizarFiltroLista();
+	atualizarFiltroLista();
 	
 	//atualizarFiltroEtiqueta();
 	
