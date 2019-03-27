@@ -19,109 +19,105 @@
 
 	<body class="custom-container">
 		<div class="row">
-			<div class="col bg-color-transparent">
-				<div class="row">
-					<div class="col">
-						<button id="botaoExportarTXT" class="btn">Exportar para TXT</button>
-						<button id="botaoLimparFiltros" class="btn">Limpar Filtros</button>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col">
-						<table class="table table-striped table-bordered table-hover white-background">
-							<thead>
-								<tr>
-									<th>Número</th>
-									<th>Lista</th>
-									<th>Título</th>
-									<th>Etiqueta</th>
-									<th>Projeto</th>
-									<th>Ticket Number</th>
-									<th>Funcional</th>
-									<th>Módulo Funcional</th>
-									<th>Horas ABAP</th>
-									<th>Limite Construção</th>
-									<th>Data Release</th>
-									<th>Data EF</th>
-									<th>ABAP</th>
-									<th>Início Construção</th>
-									<th>Fim Construção</th>
-									<th>Project - Criado</th>
-									<th>Project - Planejado</th>
-								</tr>
-								
-								<tr>
-									<td><textarea id="buscarNumero" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarLista">
-											<option value="Todos">Todas</option>
-										</select>
-									</td>
-									<td><textarea id="buscarTitulo" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarEtiqueta">
-											<option value="Todos">Todas</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td>
-										<select id="buscarProjeto">
-											<option value="Todos">Todos</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td><textarea id="buscarTicketNumber" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarFuncional">
-											<option value="Todos">Todos</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td>
-										<select id="buscarModuloFuncional">
-											<option value="Todos">Todos</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td><textarea id="buscarHorasABAP" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td><textarea id="buscarLimiteConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarDataRelease">
-											<option value="Todos">Todas</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td><textarea id="buscarDataEF" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarABAP">
-											<option value="Todos">Todos</option>
-											<option value="N/D">N/D</option>
-										</select>
-									</td>
-									<td><textarea id="buscarInicioConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td><textarea id="buscarFimConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
-									<td>
-										<select id="buscarProjectCriado">
-											<option value="Todos">Todos</option>
-											<option value="Marcado">Marcado</option>
-											<option value="Desmarcado">Desmarcado</option>
-										</select>
-									</td>
-									<td>
-										<select id="buscarProjectPlanejado">
-											<option value="Todos">Todos</option>
-											<option value="Marcado">Marcado</option>
-											<option value="Desmarcado">Desmarcado</option>
-										</select>
-									</td>
-								</tr>
-							</thead>
-							
-							<tbody id="corpoTabelaRelatorio"></tbody>
-						</table>
-					</div>
-				</div>
+			<div class="col">
+				<button id="botaoExportarTXT" class="btn">Exportar para TXT</button>
+				<button id="botaoLimparFiltros" class="btn">Limpar Filtros</button>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<table class="table table-striped table-bordered table-hover white-background">
+					<thead>
+						<tr>
+							<th>Número</th>
+							<th>Lista</th>
+							<th>Título</th>
+							<th>Etiqueta</th>
+							<th>Projeto</th>
+							<th>Ticket Number</th>
+							<th>Funcional</th>
+							<th>Módulo Funcional</th>
+							<th>Horas ABAP</th>
+							<th>Limite Construção</th>
+							<th>Data Release</th>
+							<th>Data EF</th>
+							<th>ABAP</th>
+							<th>Início Construção</th>
+							<th>Fim Construção</th>
+							<th>Project - Criado</th>
+							<th>Project - Planejado</th>
+						</tr>
+						
+						<tr>
+							<td><textarea id="buscarNumero" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarLista">
+									<option value="Todos">Todas</option>
+								</select>
+							</td>
+							<td><textarea id="buscarTitulo" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarEtiqueta">
+									<option value="Todos">Todas</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td>
+								<select id="buscarProjeto">
+									<option value="Todos">Todos</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td><textarea id="buscarTicketNumber" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarFuncional">
+									<option value="Todos">Todos</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td>
+								<select id="buscarModuloFuncional">
+									<option value="Todos">Todos</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td><textarea id="buscarHorasABAP" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarLimiteConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarDataRelease">
+									<option value="Todos">Todas</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td><textarea id="buscarDataEF" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarABAP">
+									<option value="Todos">Todos</option>
+									<option value="N/D">N/D</option>
+								</select>
+							</td>
+							<td><textarea id="buscarInicioConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td><textarea id="buscarFimConstrucao" rows=2 cols=12 placeholder="Buscar"></textarea></td>
+							<td>
+								<select id="buscarProjectCriado">
+									<option value="Todos">Todos</option>
+									<option value="Marcado">Marcado</option>
+									<option value="Desmarcado">Desmarcado</option>
+								</select>
+							</td>
+							<td>
+								<select id="buscarProjectPlanejado">
+									<option value="Todos">Todos</option>
+									<option value="Marcado">Marcado</option>
+									<option value="Desmarcado">Desmarcado</option>
+								</select>
+							</td>
+						</tr>
+					</thead>
+					
+					<tbody id="corpoTabelaRelatorio"></tbody>
+				</table>
 			</div>
 		</div>
 		
