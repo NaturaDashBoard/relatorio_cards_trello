@@ -13,6 +13,11 @@ function obterURLListasComBoardID( idBoard )
 	return TEMPLATE_URL_LISTAS.replace( '[BOARD_ID]', idBoard );
 }
 
+function obterURLEtiquetasComBoardID( idBoard )
+{
+	return TEMPLATE_URL_ETIQUETAS.replace( '[BOARD_ID]', idBoard );
+}
+
 function obterURLAtualizarCampoPersonalizadoCard( idCard, idCampoPersonalizado )
 {
 	return TEMPLATE_URL_ATUALIZAR_CAMPO_PERSONALIZADO_CARD.replace( '[CARD_ID]', idCard ).replace( '[CUSTOM_FIELD_ID]', idCampoPersonalizado );
@@ -507,7 +512,7 @@ function obterCardsRelatorioBuscadosComFiltroOption( cardsRelatorio, campoFiltro
 			{
 				var valorCampoFiltradoCardString = valorCampoFiltradoCard.toString();
 				
-				if( valorCampoFiltradoCardString.toUpperCase().includes( valorFiltroString.toUpperCase().trim() ) )
+				if( valorCampoFiltradoCardString.toUpperCase() == valorFiltroString.toUpperCase() )
 				{
 					cardsRelatorioComFiltro.push( cardRelatorio );
 				}
@@ -873,7 +878,7 @@ function obterDatasRelease( cards, camposPersonalizadosBoard )
 
 function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
 {
-	var opcoesReleases = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	var opcoesReleases = '<option value="' + OPCAO_FILTRO_TODOS + '">Todas</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
 	
 	var datasRelease = obterDatasRelease( cards, camposPersonalizadosBoard );
 	
@@ -891,7 +896,7 @@ function obterReleasesParaFiltro( cards, camposPersonalizadosBoard )
 
 function obterOpcoesParaFiltroLista( listas )
 {
-	var opcoesListas = '<option value="' + OPCAO_FILTRO_TODOS + '">Todos</option>';
+	var opcoesListas = '<option value="' + OPCAO_FILTRO_TODOS + '">Todas</option>';
 	
 	for( indiceLista = 0; indiceLista < listas.length; ++indiceLista )
 	{
@@ -901,4 +906,18 @@ function obterOpcoesParaFiltroLista( listas )
 	}
 	
 	return opcoesListas;	
+}
+
+function obterOpcoesParaFiltroEtiqueta( etiquetasCarregadas )
+{
+	var opcoesEtiquetas = '<option value="' + OPCAO_FILTRO_TODOS + '">Todas</option><option value="' + OPCAO_FILTRO_NAO_DEFINIDO + '">N/D</option>';
+	
+	for( indiceLista = 0; indiceLista < etiquetasCarregadas.length; ++indiceLista )
+	{
+		var etiqueta = etiquetasCarregadas[indiceLista];
+		
+		opcoesEtiquetas += '<option value="' + etiqueta.name + '">' + etiqueta.name + '</option>';
+	}
+	
+	return opcoesEtiquetas;
 }

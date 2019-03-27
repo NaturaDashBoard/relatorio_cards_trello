@@ -22,3 +22,10 @@ function carregarAssincListas( idBoard )
 		.done( doneGetListas )
 		.fail( failGetListas );
 }
+
+function carregarAssincEtiquetas( idBoard )
+{
+	$.ajax( obterConfigsReqAssincGetEtiquetas( idBoard ) )
+		.done( doneGetEtiquetas )
+		.fail( failGetEtiquetas );
+}

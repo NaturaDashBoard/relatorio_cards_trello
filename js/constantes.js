@@ -8,14 +8,15 @@ const ID_BOARD_QUADRO_TESTES_DASHBOARD_NATURA = '5beb929f5c13a07903fd5df0';
 const TEMPLATE_URL_BOARD_CAMPOS_PERSONALIZADOS = 'https://api.trello.com/1/boards/[BOARD_ID]/customFields?key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_CARDS = 'https://api.trello.com/1/boards/[BOARD_ID]/cards?customFieldItems=true&key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_LISTAS = 'https://api.trello.com/1/boards/[BOARD_ID]/lists?filter=open&key=' + API_KEY + '&token=' + TOKEN;
+const TEMPLATE_URL_ETIQUETAS = 'https://api.trello.com/1//boards/[BOARD_ID]/labels?fields=all&limit=0&key=' + API_KEY + '&token=' + TOKEN;
 const TEMPLATE_URL_ATUALIZAR_CAMPO_PERSONALIZADO_CARD = 'https://api.trello.com/1/cards/[CARD_ID]/customField/[CUSTOM_FIELD_ID]/item?key=' + API_KEY + '&token=' + TOKEN;
 
 const TEMPLATE_NOME_ARQUIVO_TXT = 'relatorio_[ano]_[mes]_[dia]_[hora]_[min]_[seg].txt';
 
-const TIPO_REQ_AJAX_GET = 'get';
-const TIPO_REQ_AJAX_PUT = 'put';
+const TIPO_REQ_AJAX_GET = 'GET';
+const TIPO_REQ_AJAX_PUT = 'PUT';
 
-const TIPO_DADO_AJAX_JSON = 'json';
+const TIPO_DADO_AJAX_JSON = 'JSON';
 
 const NOME_CARD_TICKET_EXEMPLO = 'Ticket Exemplo';
 const NOME_CARD_SIR_EXEMPLO    = 'SIR-NXX- WPYY';

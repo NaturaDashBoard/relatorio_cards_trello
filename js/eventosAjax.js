@@ -83,14 +83,49 @@ function doneGetListas( data )
 	console.log( listasCarregadas );
 	console.groupEnd( "listasCarregadas" );
 	
-	atualizarElementosTela();
-
-	carregarAssincCamposPersonalizados( idBoardDadosCarregados );
+	carregarAssincEtiquetas( idBoardDadosCarregados );
 }
 
 function failGetListas( jqXHR, textStatus, data )
 {
 	console.log( 'Ocorreu um Erro na Requisição AJAX para obter Listas de Board' );
+	
+	console.group( "jqXHR" );
+	console.log( jqXHR );
+	console.groupEnd( "jqXHR" );
+	
+	console.group( "textStatus" );
+	console.log( textStatus );
+	console.groupEnd( "textStatus" );	
+	
+	console.group( "data" );
+	console.log( data );
+	console.groupEnd( "data" );		
+}
+
+/* GET ETIQUETAS */
+
+function beforeSendGetEtiquetas()
+{
+	console.log( 'Enviando Requisição AJAX para obter Etiquetas de Board' );
+}
+
+function doneGetEtiquetas( data )
+{
+	etiquetasCarregadas = data;
+	
+	console.group( "etiquetasCarregadas" );
+	console.log( etiquetasCarregadas );
+	console.groupEnd( "etiquetasCarregadas" );
+	
+	atualizarElementosTela();
+
+	carregarAssincCamposPersonalizados( idBoardDadosCarregados );
+}
+
+function failGetEtiquetas( jqXHR, textStatus, data )
+{
+	console.log( 'Ocorreu um Erro na Requisição AJAX para obter Etiquetas de Board' );
 	
 	console.group( "jqXHR" );
 	console.log( jqXHR );

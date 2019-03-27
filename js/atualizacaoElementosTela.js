@@ -41,16 +41,14 @@ function atualizarFiltroLista()
 	buscarLista.val( valorSelecionado );
 }
 
-/*
 function atualizarFiltroEtiqueta()
 {
 	var valorSelecionado = buscarEtiqueta.val();
 	
-	buscarEtiqueta.html( obterOpcoesParaFiltro( NOME_CAMPO_PERSONALIZADO_PROJETO, camposPersonalizadosCarregados ) );
+	buscarEtiqueta.html( obterOpcoesParaFiltroEtiqueta( etiquetasCarregadas ) );
 	
 	buscarEtiqueta.val( valorSelecionado );
 }
-*/
 
 function atualizarFiltroProjeto()
 {
@@ -110,7 +108,7 @@ function atualizarElementosTela()
 	
 	atualizarFiltroLista();
 	
-	//atualizarFiltroEtiqueta();
+	atualizarFiltroEtiqueta();
 	
 	atualizarFiltroProjeto();
 	

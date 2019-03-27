@@ -8,3 +8,5 @@ var camposPersonalizadosCarregados = undefined;
 var cardsCarregados = undefined;
 
 var listasCarregadas = undefined;
+
+var etiquetasCarregadas = undefined;

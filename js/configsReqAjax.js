@@ -41,6 +41,19 @@ function obterConfigsReqAssincGetListas( idBoard )
 	return configsReqAssincGetListas;
 }
 
+function obterConfigsReqAssincGetEtiquetas( idBoard )
+{
+	var configsReqAssincGetEtiquetas =
+	{
+		url: obterURLEtiquetasComBoardID( idBoard ),
+		type: TIPO_REQ_AJAX_GET,
+		dataType: TIPO_DADO_AJAX_JSON,
+		beforeSend: beforeSendGetEtiquetas
+	};
+	
+	return configsReqAssincGetEtiquetas;
+}
+
 // Dados Enviados para o Trello
 
 function obterConfigsReqAssincPutCampoPersonalizadoCard( valorCampoPersonalizadoCard )
