@@ -208,6 +208,7 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 	var cardRelatorio = 
 	{
 		id: undefined,
+		url: undefined,
 		numero: undefined,
 		titulo: undefined,
 		lista: undefined,
@@ -229,6 +230,9 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 	
 	// ID (Não exibido no Relatório)
 	cardRelatorio.id = card['id'];
+	
+	// URL (Não exibido no Relatório)
+	cardRelatorio.url = card['url'];
 	
 	// Número
 	cardRelatorio.numero = card['idShort'];
@@ -616,6 +620,17 @@ function obterCheckboxCampoTabelaRelatorio( campo, idCard, idCampoPersonalizado 
 	return checkboxCampo;
 }
 
+function obterTextoCampoTabelaRelatorioComLink( campo, urlLink )
+{
+	var textoCampoComLink = '';
+	
+	var textoCampo = obterTextoCampoTabelaRelatorio( campo );
+	
+	textoCampoComLink = '<a href="' + urlLink + '">' + textoCampo + '</a>';
+	
+	return textoCampoComLink;	
+}
+
 function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoard )
 {
 	var textoCorpoTabelaRelatorio = '';
@@ -632,7 +647,7 @@ function obterTextoCorpoTabelaRelatorio( cards, listas, camposPersonalizadosBoar
 		var cardRelatorio = cardsRelatorio[indiceCardRelatorio];
 		
 		textoCorpoTabelaRelatorio += '<tr>' +
-									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.numero ) + '</td>' +
+									 '<td>' + obterTextoCampoTabelaRelatorioComLink( cardRelatorio.numero, cardRelatorio.url ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.lista ) + '</td>' +
 									 '<td class="td-titulo-card">' + obterTextoCampoTitulo( cardRelatorio.titulo ) + '</td>' +
 									 '<td>' + obterTextoCampoTabelaRelatorio( cardRelatorio.etiqueta ) + '</td>' +
