@@ -267,7 +267,7 @@ function obterObjetoCardRelatorio( card, listas, camposPersonalizadosBoard )
 	// Funcional
 	var idCampoPersonalizadoFuncional = obterIDCampoPersonalizado( NOME_CAMPO_PERSONALIZADO_FUNCIONAL, camposPersonalizadosBoard );
 	var valorCampoPersonalizadoFuncional = obterValorCampoPersonalizadoCard( idCampoPersonalizadoFuncional, itensCamposPersonalizadosCard, camposPersonalizadosBoard );
-	if( valorCampoPersonalizadoTicketNumber != undefined )
+	if( valorCampoPersonalizadoFuncional != undefined )
 	{
 		cardRelatorio.funcional = valorCampoPersonalizadoFuncional['text'];
 	}
